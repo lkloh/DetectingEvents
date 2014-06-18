@@ -12,8 +12,22 @@ class NetworkAutocorrelation:
 		self.overlap_length = overlap_length
 
 		# run the functions
-
+		windowsE = self.separate_to_windows(self.hour_dataE)
 	
 	def separate_to_windows(self, data):
-		pass
+		totalDataPoints = len(data)
+		numPointsInWindow = int(self.window_length/self.delta)
+		numPointsInOverlap = int(self.overlap_length/self.delta)
+
+		numWindows = int((totalDataPoints-numPointsInWindow)/numPointsInOverlap + 1)
+
+		splitToWindows = np.zeros(shape=(numWindows, numPointsInWindow))
+
+		for i in xrange(numWindows):
+			start_index = i*numPointsInOverlap
+			for j in xrange(numPointsInWindow):
+				splitToWindows[i,j] = data[start_index+j]
+
+		return splitToWindows
+
 
