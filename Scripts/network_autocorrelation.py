@@ -15,5 +15,5 @@ class NetworkAutocorrelation:
 
 	
 	def separate_to_windows(self, data):
-
+		pass
 
