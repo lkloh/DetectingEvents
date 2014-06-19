@@ -11,8 +11,13 @@ class NetworkAutocorrelation:
 		self.window_length = window_length
 		self.overlap_length = overlap_length
 
-		# run the functions
+		# get the data of windows
 		windowsE = self.separate_to_windows(self.hour_dataE)
+		#windowsN = self.separate_to_windows(self.hour_dataN)
+		#windowsZ = self.separate_to_windows(self.hour_dataZ)
+
+		# get autocorrelation for windows
+		self.compute_autocorrelation(windowsE)
 	
 	def separate_to_windows(self, data):
 		totalDataPoints = len(data)
@@ -30,4 +35,15 @@ class NetworkAutocorrelation:
 
 		return splitToWindows
 
-
+	def compute_autocorrelation(self, data):
+		numPts = len(data)
+		autocorrelations = np.zeros(shape=(numPts, numPts))
+		for i in xrange(numPts):
+			current_comparison = data[i,:]
+			for j in xrange(numPts):
+				if i==j:  
+					autocorrelations[i,i] = np.nan
+				else:
+					vec_j = data[j,:]
+					autocorrelations[i,j] = np.corrcoef(current_comparison, vec_j)
+		return autocorrelations
