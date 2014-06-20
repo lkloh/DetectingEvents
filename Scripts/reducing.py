@@ -11,15 +11,14 @@ class ReducingPointDensity:
 		self.original_num_pts = len(original_signal_time)
 		self.reduce_factor = reduce_factor
 		self.original_time = np.arange(0, self.original_num_pts*original_delta, original_delta)
-
+		self.original_signal_time = original_signal_time
 		rd = self.reducing_density()
 		print rd
 
 	def reducing_density(self):
-		reduced_num_pts = int(self.original_num_pts / self.reduce_factor)
+		reduced_num_pts = int(self.original_num_pts / self.reduce_factor)+1
 		reduced_time = np.zeros(shape=(reduced_num_pts, 1))
-		print reduced_num_pts
-		for i in np.arange(self.original_num_pts, self.reduce_factor):
+		for i in np.arange(0, self.original_num_pts, self.reduce_factor):
 			index = int(i/self.reduce_factor)
 			print '######'
 			print i
