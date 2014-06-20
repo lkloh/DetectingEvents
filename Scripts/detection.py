@@ -25,7 +25,7 @@ filter_cornerFreq = 5
 # ftr.filtering()
 
 """reduce density"""
-rd = ReducingPointDensity(bhe_stream.data, delta, 100)
+reduced_array = ReducingPointDensity(bhe_stream.data, delta, 100)
 
 
 
