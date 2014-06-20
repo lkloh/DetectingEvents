@@ -18,7 +18,7 @@ window_length = 30
 overlap_length = 0.4
 
 filter_order = 3
-filter_cornerFreq = 0.01
+filter_cornerFreq = 0.001
 ftr = FilterSignals(bhe_stream.data, delta, filter_order, filter_cornerFreq)
 ftr.filtering()
 

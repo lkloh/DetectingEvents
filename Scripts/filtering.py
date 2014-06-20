@@ -52,7 +52,7 @@ class FilterSignals:
 		ax2.plot(w*(NYQ/np.pi), MULTIPLE*np.abs(h), label='Butter Filter')
 		ax2.legend(loc="upper right")
 		ax2.set_title('Amplitude Spectrum vs frequency')
-		ax2.set_xlim(0,0.1)
+		#ax2.set_xlim(0,0.1)
 
 		py.show()
 
