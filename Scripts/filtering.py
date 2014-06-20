@@ -17,7 +17,7 @@ class FilterSignals:
 	def filtering(self):
 		# plot original signal-vs-time
 		fig = py.figure()
-		fig.suptitle('FILTERING FREQUENCIES')
+		fig.suptitle('Lowpass Filtering at '+str(self.cornerFreq))
 
 		# time -> frequency 
 		# unfiltered
