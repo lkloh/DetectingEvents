@@ -17,5 +17,8 @@ delta = bhz_stream.stats.delta
 window_length = 30
 overlap_length = 0.4
 
-ftr = FilterSignals(bhe_stream.data, delta)
+ftr = FilterSignals(bhe_stream.data, delta, 3, 0.05)
+ftr.filtering()
+
+
 #NetworkAutocorrelation(delta, bhe_stream.data, bhn_stream.data, bhz_stream.data, window_length, overlap_length)
